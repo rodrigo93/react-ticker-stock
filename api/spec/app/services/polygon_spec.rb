@@ -44,7 +44,6 @@ RSpec.describe Polygon, type: :model do
 
   # frozen_string_literal: true
 
-
   describe '.parse_results' do
     subject { described_class.parse_results(results) }
 
@@ -66,17 +65,17 @@ RSpec.describe Polygon, type: :model do
 
       it 'returns parsed results' do
         expect(subject).to eq([
-          {
-            open_price: 130.28,
-            high_price: 130.9,
-            low_price: 124.17,
-            close_price: 125.07,
-            volume: 112_117_471.0,
-            vw_price: 125.725,
-            timestamp: 1_672_722_000_000,
-            items_count: 1_021_065
-          }
-        ])
+                                {
+                                  open_price: 130.28,
+                                  high_price: 130.9,
+                                  low_price: 124.17,
+                                  close_price: 125.07,
+                                  volume: 112_117_471.0,
+                                  vw_price: 125.725,
+                                  timestamp: 1_672_722_000_000,
+                                  items_count: 1_021_065
+                                }
+                              ])
       end
     end
 
