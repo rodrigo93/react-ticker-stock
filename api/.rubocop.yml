@@ -1,0 +1,24 @@
+# .rubocop.yml
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: disable
+  Exclude:
+    - 'db/schema.rb'
+    - 'bin/*'
+    - 'node_modules/**/*'
+    - 'config/environments/*'
+    - 'config/initializers/*'
+    - 'config/puma.rb'
+    - 'config/spring.rb'
+
+Rails:
+  Enabled: true
+
+RSpec:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
