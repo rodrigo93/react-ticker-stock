@@ -23,5 +23,14 @@ RSpec:
 Style/Documentation:
   Enabled: false
 
+Metrics/MethodLength:
+  Max: 15
+
+RSpec/NamedSubject:
+  Enabled: false
+
 RSpec/ImplicitSubject:
+  Enabled: false
+
+RSpec/ExampleLength:
   Enabled: false

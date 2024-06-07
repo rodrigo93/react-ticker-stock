@@ -41,4 +41,59 @@ RSpec.describe Polygon, type: :model do
       end
     end
   end
+
+  # frozen_string_literal: true
+
+
+  describe '.parse_results' do
+    subject { described_class.parse_results(results) }
+
+    context 'when the results are present' do
+      let(:results) do
+        [
+          {
+            'o' => 130.28,
+            'h' => 130.9,
+            'l' => 124.17,
+            'c' => 125.07,
+            'v' => 112_117_471.0,
+            'vw' => 125.725,
+            't' => 1_672_722_000_000,
+            'n' => 1_021_065
+          }
+        ]
+      end
+
+      it 'returns parsed results' do
+        expect(subject).to eq([
+          {
+            open_price: 130.28,
+            high_price: 130.9,
+            low_price: 124.17,
+            close_price: 125.07,
+            volume: 112_117_471.0,
+            vw_price: 125.725,
+            timestamp: 1_672_722_000_000,
+            items_count: 1_021_065
+          }
+        ])
+      end
+    end
+
+    context 'when the results are empty' do
+      let(:results) { [] }
+
+      it 'returns an empty array' do
+        expect(subject).to eq([])
+      end
+    end
+
+    context 'when the results are nil' do
+      let(:results) { nil }
+
+      it 'raises a NoMethodError' do
+        expect { subject }.to raise_error(NoMethodError)
+      end
+    end
+  end
 end
