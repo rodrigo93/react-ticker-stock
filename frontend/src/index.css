@@ -7,8 +7,6 @@ body, html {
   width: 100%;
   margin: 0;
 
-  /* diagonal */
-
   background: linear-gradient(to bottom right, #ead689, rgba(200, 0, 255, 0.58));
 
   font-family: Arial, sans-serif;

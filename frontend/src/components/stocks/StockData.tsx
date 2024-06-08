@@ -8,6 +8,10 @@ interface StockDataProps {
   ticker: string;
 }
 
+const formatCurrency = (value: number | undefined) => {
+  return value && value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+};
+
 const StockData: React.FC<StockDataProps> = ({ ticker }) => {
   const dispatch: AppDispatch = useDispatch();
   const stock = useSelector((state: RootState) => state.stock);
@@ -33,15 +37,15 @@ const StockData: React.FC<StockDataProps> = ({ ticker }) => {
           <tbody>
             <tr>
               <td>Price</td>
-              <td>{stock.data.price_max}</td>
-              <td>{stock.data.price_min}</td>
-              <td>{stock.data.price_average}</td>
+              <td>{formatCurrency(stock.data.price_max)}</td>
+              <td>{formatCurrency(stock.data.price_min)}</td>
+              <td>{formatCurrency(stock.data.price_average)}</td>
             </tr>
             <tr>
               <td>Volume</td>
-              <td>{stock.data.volume_max}</td>
-              <td>{stock.data.volume_min}</td>
-              <td>{stock.data.volume_average}</td>
+              <td>{formatCurrency(stock.data.volume_max)}</td>
+              <td>{formatCurrency(stock.data.volume_min)}</td>
+              <td>{formatCurrency(stock.data.volume_average)}</td>
             </tr>
           </tbody>
         </table>
