@@ -24,7 +24,9 @@ const TickerForm: React.FC<TickerFormProps> = ({ onSubmit, children }) => {
           placeholder="Enter stock ticker"
           className="ticker-input"
         />
-        <button type="submit" className="submit-button">Fetch Stock Data</button>
+        <button type="submit" className="submit-button" disabled={ticker === ''}>
+          Search
+        </button>
       </form>
       {children}
     </>
