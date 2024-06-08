@@ -33,15 +33,15 @@ const StockData: React.FC<StockDataProps> = ({ ticker }) => {
           <tbody>
             <tr>
               <td>Price</td>
-              <td>{stock.data.max_price}</td>
-              <td>{stock.data.min_price}</td>
-              <td>{stock.data.average_price}</td>
+              <td>{stock.data.price_max}</td>
+              <td>{stock.data.price_min}</td>
+              <td>{stock.data.price_average}</td>
             </tr>
             <tr>
               <td>Volume</td>
-              <td>{stock.data.max_volume}</td>
-              <td>{stock.data.min_volume}</td>
-              <td>TBD</td>
+              <td>{stock.data.volume_max}</td>
+              <td>{stock.data.volume_min}</td>
+              <td>{stock.data.volume_average}</td>
             </tr>
           </tbody>
         </table>

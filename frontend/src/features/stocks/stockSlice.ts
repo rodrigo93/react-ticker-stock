@@ -2,11 +2,12 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 interface StockData {
-  average_price?: number;
-  max_volume?: number;
-  min_volume?: number;
-  max_price?: number;
-  min_price?: number;
+  price_average?: number;
+  price_max?: number;
+  price_min?: number;
+  volume_average?: number;
+  volume_max?: number;
+  volume_min?: number;
 }
 
 interface StockState {
