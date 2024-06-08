@@ -1,4 +1,5 @@
 import React, { useState, FormEvent } from 'react';
+import './TickerForm.css';
 
 interface TickerFormProps {
   onSubmit: (ticker: string) => void;
@@ -15,14 +16,15 @@ const TickerForm: React.FC<TickerFormProps> = ({ onSubmit, children }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="ticker-form">
         <input
           type="text"
           value={ticker}
           onChange={(e) => setTicker(e.target.value)}
           placeholder="Enter stock ticker"
+          className="ticker-input"
         />
-        <button type="submit">Fetch Stock Data</button>
+        <button type="submit" className="submit-button">Fetch Stock Data</button>
       </form>
       {children}
     </>

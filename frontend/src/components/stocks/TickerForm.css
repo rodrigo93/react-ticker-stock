@@ -1,0 +1,41 @@
+.ticker-form {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: center; /* Center form elements */
+}
+
+.ticker-input {
+  flex: 1;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .ticker-input {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .ticker-form {
+    flex-direction: column;
+  }
+
+  .submit-button {
+    width: 100%;
+  }
+}

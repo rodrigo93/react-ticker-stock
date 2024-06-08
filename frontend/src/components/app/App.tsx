@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Ticker from '../stocks/index';
+import './App.css';
 
 const App: React.FC = () => {
   const [ticker, setTicker] = useState<string>('');
@@ -9,7 +10,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="App">
+    <div className="app">
       <Ticker.Form onSubmit={handleTickerSubmit} >
         <Ticker.Data ticker={ticker} />
       </Ticker.Form>
