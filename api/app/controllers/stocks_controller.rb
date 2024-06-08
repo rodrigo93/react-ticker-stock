@@ -20,11 +20,12 @@ class StocksController < ApplicationController
   # rubocop:disable Metrics/AbcSize
   def calculate_results(results)
     {
-      average_price: results.sum { |d| d[:close_price] } / results.size,
-      max_volume: results.max_by { |d| d[:volume] }[:volume],
-      min_volume: results.min_by { |d| d[:volume] }[:volume],
-      max_price: results.max_by { |d| d[:high_price] }[:high_price],
-      min_price: results.min_by { |d| d[:low_price] }[:low_price]
+      price_average: results.sum { |d| d[:close_price] } / results.size,
+      price_max: results.max_by { |d| d[:high_price] }[:high_price],
+      price_min: results.min_by { |d| d[:low_price] }[:low_price],
+      volume_average: results.sum { |d| d[:volume] } / results.size,
+      volume_max: results.max_by { |d| d[:volume] }[:volume],
+      volume_min: results.min_by { |d| d[:volume] }[:volume]
     }
   end
   # rubocop:enable Metrics/AbcSize

@@ -44,11 +44,12 @@ RSpec.describe StocksController, type: :controller do
         subject
 
         expected_data = {
-          'average_price' => 125.48333333333333,
-          'max_volume' => 112_117_471.0,
-          'min_volume' => 80_716_808.0,
-          'max_price' => 130.9,
-          'min_price' => 124.17
+          'price_average' => 125.48333333333333,
+          'price_max' => 130.9,
+          'price_min' => 124.17,
+          'volume_average' => 93_978_304.0,
+          'volume_max' => 112_117_471.0,
+          'volume_min' => 80_716_808.0
         }
 
         expect(JSON.parse(response.body)).to eq(expected_data)
