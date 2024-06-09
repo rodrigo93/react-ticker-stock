@@ -3,11 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe StocksController, type: :controller do
+  let(:api_service) { PolygonService }
+
   describe 'GET #fetch' do
     subject { get :fetch, params: { ticker: } }
 
     let(:ticker) { 'AAPL' }
-    let(:api_service) { Polygon }
     let(:results) do
       [
         { 'v' => 112_117_471.0, 'vw' => 125.725, 'o' => 130.28, 'c' => 125.07, 'h' => 130.9, 'l' => 124.17,
@@ -63,6 +64,44 @@ RSpec.describe StocksController, type: :controller do
         subject
 
         expect(response).to have_http_status(:bad_request)
+      end
+    end
+  end
+
+  describe 'before_action #sanitize_ticker' do
+    subject { get :fetch, params: { ticker: } }
+
+    context 'when ticker is valid' do
+      let(:ticker) { 'aapl ' }
+
+      before { allow(api_service).to receive(:fetch_stock_data).with('AAPL') }
+
+      it 'sanitizes the ticker' do
+        subject
+
+        expect(controller.params[:ticker]).to eq('AAPL')
+      end
+    end
+
+    context 'when ticker is invalid' do
+      let(:ticker) { 'invalid ticker' }
+
+      it 'returns a bad request status with proper error' do
+        subject
+
+        expect(response).to have_http_status(:bad_request)
+        expect(JSON.parse(response.body)).to eq({ 'error' => 'Invalid ticker symbol' })
+      end
+    end
+
+    context 'when ticker is missing' do
+      let(:ticker) { nil }
+
+      it 'returns a bad request status with proper message' do
+        subject
+
+        expect(response).to have_http_status(:bad_request)
+        expect(JSON.parse(response.body)).to eq({ 'error' => 'Ticker symbol is missing' })
       end
     end
   end
