@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class StocksController < ApplicationController
+  before_action :sanitize_ticker, only: [:fetch]
+
   def fetch
     response = api_service.fetch_stock_data(params[:ticker])
 
@@ -17,6 +19,10 @@ class StocksController < ApplicationController
 
   private
 
+  def api_service
+    PolygonService
+  end
+
   # rubocop:disable Metrics/AbcSize
   def calculate_results(results)
     {
@@ -30,7 +36,14 @@ class StocksController < ApplicationController
   end
   # rubocop:enable Metrics/AbcSize
 
-  def api_service
-    PolygonService
+  def sanitize_ticker
+    if params[:ticker].present?
+      params[:ticker].upcase!
+      params[:ticker].strip!
+
+      render json: { error: 'Invalid ticker symbol' }, status: :bad_request unless params[:ticker] =~ /^[A-Z]{1,5}$/
+    else
+      render json: { error: 'Ticker symbol is missing' }, status: :bad_request
+    end
   end
 end
