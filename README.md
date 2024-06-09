@@ -3,6 +3,8 @@
 This is a simple stock app that allows users to search for a stock ticker and
 view the current price of the stock powered by [Polygon.io](https://polygon.io/).
 
+https://github.com/rodrigo93/react-ticker-stock/assets/9914896/f599b9d7-a85c-4002-8902-154130e4afaa
+
 # Getting Started 🚀
 
 This project is using:
