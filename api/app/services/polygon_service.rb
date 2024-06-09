@@ -6,8 +6,11 @@ class PolygonService
 
   def self.fetch_stock_data(ticker)
     options = { query: { apiKey: ENV['API_POLYGON_KEY'] } }
+    cache_key = "stock_data/#{ticker}"
 
-    get("/aggs/ticker/#{ticker}/range/1/day/2023-01-01/2023-12-31", options)
+    Rails.cache.fetch(cache_key, expires_in: 12.hours) do
+      get("/aggs/ticker/#{ticker}/range/1/day/2023-01-01/2023-12-31", options)
+    end
   end
 
   # O number - The open price for the symbol in the given time period.
