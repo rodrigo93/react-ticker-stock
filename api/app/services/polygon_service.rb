@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Polygon
+class PolygonService
   include HTTParty
   base_uri 'https://api.polygon.io/v2'
 

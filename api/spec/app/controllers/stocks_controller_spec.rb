@@ -7,7 +7,7 @@ RSpec.describe StocksController, type: :controller do
     subject { get :fetch, params: { ticker: } }
 
     let(:ticker) { 'AAPL' }
-    let(:api_service) { Polygon }
+    let(:api_service) { PolygonService }
     let(:results) do
       [
         { 'v' => 112_117_471.0, 'vw' => 125.725, 'o' => 130.28, 'c' => 125.07, 'h' => 130.9, 'l' => 124.17,

@@ -31,6 +31,6 @@ class StocksController < ApplicationController
   # rubocop:enable Metrics/AbcSize
 
   def api_service
-    Polygon
+    PolygonService
   end
 end

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Polygon, type: :model do
+RSpec.describe PolygonService, type: :model do
   describe '.fetch_stock_data' do
     subject { described_class.fetch_stock_data(ticker) }
 
@@ -41,8 +41,6 @@ RSpec.describe Polygon, type: :model do
       end
     end
   end
-
-  # frozen_string_literal: true
 
   describe '.parse_results' do
     subject { described_class.parse_results(results) }
